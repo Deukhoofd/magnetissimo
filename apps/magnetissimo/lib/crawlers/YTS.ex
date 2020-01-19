@@ -15,6 +15,10 @@ defmodule Magnetissimo.Crawlers.YTS do
 
   def handle_info(:rss_fetch, state) do
     rss_body = rss()
+    if (String.length(rss_body) == 0) do
+      Logger.warn("YTS rss returned empty.")
+      {:noreply, state}
+    end
 
     %{torrents: torrents} =
       rss_body
@@ -48,7 +52,7 @@ defmodule Magnetissimo.Crawlers.YTS do
         magnet_url: magnet_url,
         leechers: 0,
         seeds: 0,
-        website_source: "YTS.am",
+        website_source: "YTS.lt",
         size: 0
       })
 
@@ -56,9 +60,9 @@ defmodule Magnetissimo.Crawlers.YTS do
   end
 
   defp rss do
-    Logger.debug("[YTS.am] Downloading url: https://yts.am/rss")
+    Logger.debug("[YTS.am] Downloading url: https://yts.lt/rss")
 
-    "https://yts.am/rss"
+    "https://yts.lt/rss"
     |> HTTPoison.get!()
     |> Map.get(:body)
   end
