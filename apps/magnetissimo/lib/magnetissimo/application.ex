@@ -11,8 +11,6 @@ defmodule Magnetissimo.Application do
       Magnetissimo.Crawlers.EZTV,
       Magnetissimo.Crawlers.ThePirateBay,
       Magnetissimo.Crawlers.TorrentDownloads,
-      Magnetissimo.Crawlers.Nyaa,
-      Magnetissimo.Crawlers.NyaaPantsu,
       Magnetissimo.Crawlers.YTS,
       Magnetissimo.Crawlers.Leetx
     ]
