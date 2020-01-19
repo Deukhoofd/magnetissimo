@@ -60,7 +60,7 @@ defmodule Magnetissimo.Crawlers.TorrentDownloads do
         size: 0
       })
 
-    Repo.insert(torrent)
+    Repo.insert(torrent, on_conflict: :nothing)
   end
 
   defp rss do

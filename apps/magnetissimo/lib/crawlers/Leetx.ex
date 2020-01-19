@@ -63,7 +63,7 @@ defmodule Magnetissimo.Crawlers.Leetx do
         size: 0
       })
 
-    Repo.insert(torrent)
+    Repo.insert(torrent, on_conflict: :nothing)
   end
 
   defp parse_page(page_url) do
